@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "noUnusedParameters": true,
+      "removeComments": false,
+      "sourceMap": false,
+
+      "lib": [
+        "es2015",
+        "es2016",
+        "es2017",
+        "dom"
+      ]
+      
+  },
+  "files": [
+      "main2021_01_17.ts"
+  ]
+  
+}

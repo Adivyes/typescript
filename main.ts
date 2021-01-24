@@ -127,4 +127,64 @@ function findInSentence(sen: string, whatToFind: (w1: number, w2: number)=> bool
     return w1 < w2;
   };
   console.log(findInSentence("i love dogs", howToFindBiggest));
-  
+//  -------------------------------------------------------- 
+
+
+interface IRemoteControl {
+  isOn: boolean,
+  temprature: number;
+  power: (isOn: boolean) => void; 
+  setTemparure: (temp: number) => void;
+  manufacturer: string;
+}
+
+
+class BaseAirCondition {
+  engine: string;
+  fan: number;
+  manufacturer: string
+
+  constructor(arg1) {
+    this.manufacturer = arg1;
+  }
+}
+
+class LG extends BaseAirCondition implements IRemoteControl {
+  isOn: boolean;
+  temprature: number;
+  power: (isOn: boolean) => void;
+  setTemparure: (temp: number) => void;
+
+  constructor() {
+    super("LG AirCondition");
+  }
+}
+
+class Tadiran extends BaseAirCondition implements IRemoteControl{
+  isOn: boolean = false;
+  temprature: number;
+  power: (isOn: boolean) => void;
+  setTemparure: (temp: number) => void;
+
+  constructor() {
+    super("Tadiran AirCondition");
+  }
+}
+
+class RemoteControl {
+  airCondition: IRemoteControl;
+  pair(ac: IRemoteControl): void {
+    this.airCondition = ac;
+  }
+
+  printManufacturer() {
+    console.log(this.airCondition.manufacturer);
+  }
+}
+
+let remoteControl = new RemoteControl();
+let airCondition = new LG();
+//let airCondition = new Tadiran();
+
+remoteControl.pair(airCondition);
+remoteControl.printManufacturer();

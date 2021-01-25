@@ -101,90 +101,121 @@
 //     return biggerWord;
 // }
 
+// console.log(senLength("fun time"));
 
-// senLength("fun time")
-// senLength("I love dogs")
+
 
 // Next: pass another parameter to findInSentence named wordSelector
 // wordSelector is a reference to a function has two argumets (word1, word2) and returns a boolean
 // 	Returns true if selecting the first word, false if selecting the secod word
 
-function findInSentence(sen: string, whatToFind: (w1: number, w2: number)=> boolean): string {
-    let wordsArray: string[] = sen.split(" ");
-    console.log(wordsArray);
-    let maxLengthWord: string = wordsArray[0];
-    for (let i: number = 1; i < wordsArray.length; i++) {
-      if (whatToFind(wordsArray[i].length, maxLengthWord.length)) {
-        maxLengthWord = wordsArray[i];
-      }
-    }
-    return maxLengthWord;
+// function findInSentence(sen: string, whatToFind: (w1: number, w2: number)=> boolean): string {
+//     let wordsArray: string[] = sen.split(" ");
+//     console.log(wordsArray);
+//     let maxLengthWord: string = wordsArray[0];
+//     for (let i: number = 1; i < wordsArray.length; i++) {
+//       if (whatToFind(wordsArray[i].length, maxLengthWord.length)) {
+//         maxLengthWord = wordsArray[i];
+//       }
+//     }
+//     return maxLengthWord;
+//   }
+//   let howToFindBiggest = (w1: number, w2: number): boolean => {
+//     return w1 > w2;
+//   };
+//   let howToFindSmallest = (w1: number, w2: number): boolean => {
+//     return w1 < w2;
+//   };
+//   console.log(findInSentence("i love dogs", howToFindBiggest));
+//   -------------------------------------------------------- 
+
+
+// interface IRemoteControl {
+//   isOn: boolean,
+//   temprature: number;
+//   power: (isOn: boolean) => void; 
+//   setTemparure: (temp: number) => void;
+//   manufacturer: string;
+// }
+
+
+// class BaseAirCondition {
+//   engine: string;
+//   fan: number;
+//   manufacturer: string
+
+//   constructor(arg1) {
+//     this.manufacturer = arg1;
+//   }
+// }
+
+// class LG extends BaseAirCondition implements IRemoteControl {
+//   isOn: boolean;
+//   temprature: number;
+//   power: (isOn: boolean) => void;
+//   setTemparure: (temp: number) => void;
+
+//   constructor() {
+//     super("LG AirCondition");
+//   }
+// }
+
+// class Tadiran extends BaseAirCondition implements IRemoteControl{
+//   isOn: boolean = false;
+//   temprature: number;
+//   power: (isOn: boolean) => void;
+//   setTemparure: (temp: number) => void;
+
+//   constructor() {
+//     super("Tadiran AirCondition");
+//   }
+// }
+
+// class RemoteControl {
+//   airCondition: IRemoteControl;
+//   pair(ac: IRemoteControl): void {
+//     this.airCondition = ac;
+//   }
+
+//   printManufacturer() {
+//     console.log(this.airCondition.manufacturer);
+//   }
+// }
+
+// let remoteControl = new RemoteControl();
+// let airCondition = new LG();
+// //let airCondition = new Tadiran();
+
+// remoteControl.pair(airCondition);
+// remoteControl.printManufacturer();
+
+class User{
+  firstName:string="";
+  email:string="";
+  password:string="";
+  age:number=0;
+  
+  constructor(Name:string, Email:string, Password:string, Age:number ){
+    this.firstName = Name;
+    this.email = Email;
+    this.password = Password;
+    this.age = Age;
   }
-  let howToFindBiggest = (w1: number, w2: number): boolean => {
-    return w1 > w2;
-  };
-  let howToFindSmallest = (w1: number, w2: number): boolean => {
-    return w1 < w2;
-  };
-  console.log(findInSentence("i love dogs", howToFindBiggest));
-//  -------------------------------------------------------- 
 
-
-interface IRemoteControl {
-  isOn: boolean,
-  temprature: number;
-  power: (isOn: boolean) => void; 
-  setTemparure: (temp: number) => void;
-  manufacturer: string;
+   printAll():string{
+    return `${this.firstName + this.email + this.password + this.age}`
+  }
 }
 
-
-class BaseAirCondition {
-  engine: string;
-  fan: number;
-  manufacturer: string
-
-  constructor(arg1) {
-    this.manufacturer = arg1;
-  }
+class Admin extends User{
+isAllow:boolean = true;
+constructor(Allow:boolean, Name:string, Email:any, Password:string, Age:number){
+super(Name, Email, Password, Age)
+this.isAllow = Allow
+}
 }
 
-class LG extends BaseAirCondition implements IRemoteControl {
-  isOn: boolean;
-  temprature: number;
-  power: (isOn: boolean) => void;
-  setTemparure: (temp: number) => void;
+let newAdmin1 = new Admin (true, "david", "davi@123.mail","123456", 30);
 
-  constructor() {
-    super("LG AirCondition");
-  }
-}
 
-class Tadiran extends BaseAirCondition implements IRemoteControl{
-  isOn: boolean = false;
-  temprature: number;
-  power: (isOn: boolean) => void;
-  setTemparure: (temp: number) => void;
-
-  constructor() {
-    super("Tadiran AirCondition");
-  }
-}
-
-class RemoteControl {
-  airCondition: IRemoteControl;
-  pair(ac: IRemoteControl): void {
-    this.airCondition = ac;
-  }
-
-  printManufacturer() {
-    console.log(this.airCondition.manufacturer);
-  }
-}
-
-let remoteControl = new RemoteControl();
-let airCondition = new LG();
-//let airCondition = new Tadiran();
-
-remoteControl.pair(airCondition);
-remoteControl.printManufacturer();
+console.log(newAdmin1);
